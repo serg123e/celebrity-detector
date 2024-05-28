@@ -4,6 +4,10 @@ FROM python:3.10-slim
 # Set the working directory in the container
 WORKDIR /app
 
+# Define environment variables to disable CUDA
+ENV CUDA_VISIBLE_DEVICES=-1
+ENV TF_CPP_MIN_LOG_LEVEL=2
+
 # Install necessary build tools for celeb-detector
 RUN apt-get update && apt-get install -y \
     gcc \

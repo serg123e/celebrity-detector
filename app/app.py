@@ -5,7 +5,6 @@ from fastapi.security.api_key import APIKeyHeader
 from fastapi.middleware.cors import CORSMiddleware
 from celeb_detector import celeb_recognition
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 print("Loaded: celeb_detector")
 
 API_TOKEN = os.getenv("API_TOKEN")
