@@ -26,4 +26,5 @@ COPY app /app
 EXPOSE 80
 
 # Run Gunicorn when the container launches
-CMD ["gunicorn", "-w", "1", "-b", "0.0.0.0:80", "app:app"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "80"]
+

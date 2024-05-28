@@ -1,6 +1,6 @@
 import os
 from fastapi import FastAPI, File, UploadFile, HTTPException, Depends, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.security.api_key import APIKeyHeader
 from fastapi.middleware.cors import CORSMiddleware
 from celeb_detector import celeb_recognition
@@ -10,6 +10,11 @@ print("Loaded: celeb_detector")
 
 API_TOKEN = os.getenv("API_TOKEN")
 api_key_header = APIKeyHeader(name="Authorization", auto_error=False)
+
+if API_TOKEN:
+  print("API_TOKEN specified, authorization enabled") 
+else:
+  print("API_TOKEN not specified, authorization DISABLED. Do not expose the service to public") 
 
 app = FastAPI()
 
@@ -24,7 +29,8 @@ app.add_middleware(
 
 def get_api_key(api_key_header: str = Depends(api_key_header)):
     if API_TOKEN and api_key_header != API_TOKEN:
-        raise HTTPException(status_code=403, detail="Could not validate credentials")
+
+        raise HTTPException(status_code=403, detail=f"Could not validate credentials {api_key_header} <=> {API_TOKEN}")
     return api_key_header
 
 @app.post("/upload")

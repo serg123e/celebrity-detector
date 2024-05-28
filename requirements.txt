@@ -1,28 +1,22 @@
-# flask app
+# FastAPI app
+fastapi
+uvicorn
 numpy
-flask
-flask-cors
-gunicorn
-
-protobuf==3.20.1
-
+requests
+fastapi[all]
 
 # celeb-detector
-cmake
-# celeb-detector # patched version inlcuded
 annoy
 keras-vggface
 keras-applications
-# Directly from repo
-# git+https://github.com/shobhit9618/celeb_recognition.git
 torch
 face_recognition
-annoy
 imutils
 opencv-python
 matplotlib
-numpy
 tqdm
 pillow
 onnx2torch
 requests
+
+protobuf==3.20.1
