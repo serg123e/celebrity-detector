@@ -1,7 +1,11 @@
 # Celebrity detector
 
 
-## Build and run
+## Run from Docker Hub
+
+    docker run -p 5080:80 -e API_TOKEN=your_api_token serg123e/celebrity-detector:latest
+
+## Build local image and run
 
   1. git lfs install
   2. git clone https://github.com/serg123e/celebrity-detector.git
